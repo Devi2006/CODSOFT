@@ -1,1 +1,131 @@
+import java.util.Scanner;
+
+class currency {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Base currency:");
+        System.out.println("Currency Converter");
+        System.out.println("1. Indian Rupee (INR)");
+        System.out.println("2. Euro (EUR)");
+        System.out.println("3. US Dollar (USD)");
+        System.out.println("4. Japanese Yen (JPY)");
+        System.out.print("Choose the base currency:");
+        int baseCurrency = sc.nextInt();
+
+        System.out.print("Enter the amount in the base currency: ");
+        double amount = sc.nextDouble();
+
+        // Conversion rates (as per the date coded)
+        double usdToInr = 82.92;
+        double eurToInr = 90.0;
+        double jpyToInr = 0.70;
+
+        double convertedAmount = 0.0;
+        String targetCurrency = "";
+
+        switch (baseCurrency) {
+            case 1: // INR to other currencies
+                System.out.println("1. US Dollar (USD)");
+                System.out.println("2. Euro (EUR)");
+                System.out.println("3. Japanese Yen (JPY)");
+                System.out.print("Choose the target currency:");
+                int targetCurrencyChoice = sc.nextInt();
+                switch (targetCurrencyChoice) {
+                    case 1:
+                        convertedAmount = amount / usdToInr;
+                        targetCurrency = "USD";
+                        break;
+                    case 2:
+                        convertedAmount = amount / eurToInr;
+                        targetCurrency = "EUR";
+                        break;
+                    case 3:
+                        convertedAmount = amount / jpyToInr;
+                        targetCurrency = "JPY";
+                        break;
+                    default:
+                        System.out.println("Invalid choice for target currency.");
+                        System.exit(0);
+                }
+                break;
+            case 2: // EUR to other currencies
+                System.out.println("1. Indian Rupee (INR)");
+                System.out.println("2. US Dollar (USD)");
+                System.out.println("3. Japanese Yen (JPY)");
+                System.out.print("Choose the target currency:");
+                targetCurrencyChoice = sc.nextInt();
+                switch (targetCurrencyChoice) {
+                    case 1:
+                        convertedAmount = amount * eurToInr;
+                        targetCurrency = "INR";
+                        break;
+                    case 2:
+                        convertedAmount = amount * eurToInr / usdToInr;
+                        targetCurrency = "USD";
+                        break;
+                    case 3:
+                        convertedAmount = amount * eurToInr / jpyToInr;
+                        targetCurrency = "JPY";
+                        break;
+                    default:
+                        System.out.println("Invalid choice for target currency.");
+                        System.exit(0);
+                }
+                break;
+            case 3: // USD to other currencies
+                System.out.println("1. Indian Rupee (INR)");
+                System.out.println("2. Euro (EUR)");
+                System.out.println("3. Japanese Yen (JPY)");
+                System.out.print("Choose the target currency:");
+                targetCurrencyChoice = sc.nextInt();
+                switch (targetCurrencyChoice) {
+                    case 1:
+                        convertedAmount = amount * usdToInr;
+                        targetCurrency = "INR";
+                        break;
+                    case 2:
+                        convertedAmount = amount;
+                        targetCurrency = "EUR";
+                        break;
+                    case 3:
+                        convertedAmount = amount * usdToInr / jpyToInr;
+                        targetCurrency = "JPY";
+                        break;
+                    default:
+                        System.out.println("Invalid choice for target currency.");
+                        System.exit(0);
+                }
+                break;
+            case 4: // JPY to other currencies
+                System.out.println("1. Indian Rupee (INR)");
+                System.out.println("2. US Dollar (USD)");
+                System.out.println("3. Euro (EUR)");
+                System.out.print("Choose the target currency:");
+                targetCurrencyChoice = sc.nextInt();
+                switch (targetCurrencyChoice) {
+                    case 1:
+                        convertedAmount = amount * jpyToInr;
+                        targetCurrency = "INR";
+                        break;
+                    case 2:
+                        convertedAmount = amount * jpyToInr / usdToInr;
+                        targetCurrency = "USD";
+                        break;
+                    case 3:
+                        convertedAmount = amount * jpyToInr / eurToInr;
+                        targetCurrency = "EUR";
+                        break;
+                    default:
+                        System.out.println("Invalid choice for target currency.");
+                        System.exit(0);
+                }
+                break;
+            default:
+                System.out.println("Invalid choice for base currency.");
+                System.exit(0);
+        }
+
+        System.out.println("Converted amount: " + convertedAmount + " " + targetCurrency);
+    }
+}
 
